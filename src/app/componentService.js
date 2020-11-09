@@ -12,89 +12,76 @@
  */
 
 import sayName from './alertService';
-let todoList = {
-  todos: [{title:'item1', completed: false}],
-// Render todos
-renderTodo() {
-  if (this.todos.length === 0) {
-    console.log('Empty todo you have');
-    
-    
-  }else{
-     // The todos will come from local storage
-  for (let i = 0; i < this.todos.length; i++) {
-    const todoItem = this.todos[i].title;
-     console.log('your todos:',todoItem);
-     if (this.todos[i].completed === true) {
-        console.log('(X):',this.todos[i].title);
-     }else{
-       console.log('():',this.todos[i].title);
 
-     }
-    
-  }
+// const todoList = {
+//   todos: [{ title: 'item1', completed: false }],
+//   // Render todos
+//   renderTodo() {
+//     if (this.todos.length === 0) {
+//       console.log('Empty todo you have');
+//     } else {
+//       // The todos will come from local storage
+//       for (let i = 0; i < this.todos.length; i++) {
+//         const todoItem = this.todos[i].title;
+//         console.log('your todos:', todoItem);
+//         if (this.todos[i].completed === true) {
+//           console.log('(X):', this.todos[i].title);
+//         } else {
+//           console.log('():', this.todos[i].title);
+//         }
+//       }
+//     }
+//   },
 
-  }
- 
- 
-},
+//   // Add Todos
+//   addTodo(title) {
+//     this.todos.push({ title, completed: false });
+//     this.renderTodo();
+//   },
 
-// Add Todos
-addTodo(title) {
-  this.todos.push({title:title, completed:false});
-  this.renderTodo();
-},
+//   // Edit todos
+//   editTodo(position, newTodo) {
+//   // The todos will come from input fields
+//     this.todos[position].title = newTodo;
+//     this.renderTodo();
+//   },
 
-// Edit todos
-editTodo(position, newTodo) {
-  // The todos will come from input fields
-  this.todos[position].title = newTodo
-  this.renderTodo();
-},
+//   // Delete Todos
 
-// Delete Todos
+//   deleteTodo(position) {
+//     this.todos.splice(position, 1);
+//     this.renderTodo();
+//   },
 
-deleteTodo(position) {
- 
-  this.todos.splice(position, 1);
-  this.renderTodo();
-},
+//   // Toggle Completed
+//   toggleCompleted(position) {
+//     const todo = this.todos[position];
+//     todo.completed = !todo.completed;
+//     this.renderTodo();
+//   },
 
-// Toggle Completed
-toggleCompleted(position) {
-  let todo = this.todos[position]
-  todo.completed = !todo.completed
-   this.renderTodo();
-},
+//   toggleAll() {
+//     totalTodos = this.todos.length;
+//     let completedTodos = 0;
+//     for (let i = 0; i < totalTodos; i++) {
+//       if (this.todos[i].completed === true) {
+//         completedTodos++;
+//       }
+//     }
+//     if (completedTodos === totalTodos) {
+//     // Make everything false
+//       for (let i = 0; i < totalTodos; i++) {
+//         this.todos[i].completed = false;
+//       }
+//     } else {
+//       for (let i = 0; i < totalTodos; i++) {
+//         this.todos[i].completed = true;
+//       }
+//     }
+//     this.renderTodo();
+//   },
 
-toggleAll(){
-  totalTodos = this.todos.length
-  let completedTodos = 0
-  for (let i = 0; i < totalTodos; i++) {
-     if (this.todos[i].completed === true) {
-       completedTodos++
-       
-     }
-    
-  }
-  if (completedTodos === totalTodos) {
-    // Make everything false
-    for (let i = 0; i < totalTodos; i++) {
-      this.todos[i].completed = false 
-      
-    } 
-     
-    
-  }else{
-    for (let i = 0; i < totalTodos; i++) {
-      this.todos[i].completed = true 
-      
-    } 
-  }
-  this.renderTodo()
-}
-
-}
+// };
 
 const component = () => {
   const element = document.createElement('div');
