@@ -88,6 +88,7 @@ const todoList = document.querySelector('.todo-list')
 const filterOption = document.querySelector('.filter-todo')
 
 // Event Listeners
+document.addEventListener('DOMContentLoaded',getTodos)
 todoBtn.addEventListener('click',addTodo)
 todoList.addEventListener('click', deleteAndCheck)
 filterOption.addEventListener('click', filterTodo)
@@ -97,6 +98,8 @@ filterOption.addEventListener('click', filterTodo)
 
 function addTodo(e) { 
   e.preventDefault()
+
+  // TODO div
   const todoDiv = document.createElement('div')
   todoDiv.classList.add('todo')
   // Create li
@@ -140,6 +143,7 @@ if (itemToDelete.classList[0]=== 'trash-btn') {
   const todo = itemToDelete.parentElement
   // Animation
   todo.classList.add('fall')
+  removeTodoFromLocalstorage(todo)
   todo.addEventListener("transitionend",function(){
     todo.remove()
 
@@ -198,6 +202,63 @@ if (itemToDelete.classList[0]=== 'complete-btn') {
     todos.push(todo)
     localStorage.setItem('todos', JSON.stringify(todos))
   }
+
+
+  // Get Todos 
+function getTodos(){
+    // check if something is already stored
+    let todos;
+    if (localStorage.getItem('todos')===null) {
+      todos = []
+      
+    }else{
+      todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    todos.forEach((todo)=>{
+       // TODO div
+  const todoDiv = document.createElement('div')
+  todoDiv.classList.add('todo')
+  // Create li
+
+  const newTodo = document.createElement('li')
+  newTodo.classList.add('todo-item')
+  newTodo.textContent = todo
+  todoDiv.appendChild(newTodo)
+
+  // check mark button
+  const completedBtn = document.createElement('button')
+  completedBtn.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>'
+  completedBtn.classList.add('complete-btn')
+  todoDiv.appendChild(completedBtn)
+  // check trash button
+  const trashBtn = document.createElement('button')
+  trashBtn.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>'
+  trashBtn.classList.add('trash-btn')
+  todoDiv.appendChild(trashBtn)
+
+  // Append to todoList
+  todoList.appendChild(todoDiv)
+
+    })
+  }
+
+
+  // Remove todo from localStorage
+  function removeTodoFromLocalstorage(todo){
+    // check if something is already stored
+    let todos;
+    if (localStorage.getItem('todos')===null) {
+      todos = []
+      
+    }else{
+      todos = JSON.parse(localStorage.getItem('todos'))
+    }
+    // Grab the li tag inside the div and get the text
+    console.log(todo.children[0].innerText)
+    todos.splice(todos.indexOf(todo.children[0].innerText),1)
+     localStorage.setItem('todos', JSON.stringify(todos))
+  }
+
 
 
 
