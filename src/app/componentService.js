@@ -82,7 +82,8 @@ import sayName from './alertService';
 //   },
 
 // };
-const todoInput = document.querySelector('.todo-input')
+const loadTodo = (()=>{
+  const todoInput = document.querySelector('.todo-input')
 const todoBtn = document.querySelector('.todo-btn')
 const todoList = document.querySelector('.todo-list')
 const filterOption = document.querySelector('.filter-todo')
@@ -260,6 +261,9 @@ function getTodos(){
   }
 
 
+
+
+})()
 
 
 const component = () => {

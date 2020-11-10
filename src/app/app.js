@@ -1,3 +1,15 @@
+//new item constructor
+let  todoItem = (project,title,date,priority)=>{
+    this.project=project;
+    this.title=title;
+    this.date =date;
+    this.priority=priority;
+    list.push(this)
+    
+}
+export default Item
+
+
 let doc;
 doc = document;
 doc = document.head;
